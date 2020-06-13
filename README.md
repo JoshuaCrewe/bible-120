@@ -5,3 +5,10 @@
 [Source API](https://github.com/getbible/v2)
 
 `pandoc -o ./dist/bible-120.epub --metadata title="Bible in 120 Days" ./src/tmp/*.md `
+
+
+@TODO
+
+[ ] - Automate ebook creation
+[ ] - Add styles to pandoc when creating ebook
+[ ] - Add full reading plan data
