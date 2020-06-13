@@ -3,75 +3,7 @@
 const got = require('got');
 const fs = require('fs');
 const readingPlan = require('./data.json')
-
-const books = [
-    "genesis",
-    "exodus",
-    "leviticus",
-    "numbers",
-    "deuteronomy",
-    "joshua",
-    "judges",
-    "ruth",
-    "1st Samuel",
-    "2nd Samuel",
-    "1st Kings",
-    "2nd Kings",
-    "1st Chronicles",
-    "2nd Chronicles",
-    "ezra",
-    "nehemiah",
-    "esther",
-    "job",
-    "psalms",
-    "proverbs",
-    "ecclesiastes",
-    "song of Solomon",
-    "isaiah",
-    "jeremiah",
-    "lamentations",
-    "ezekiel",
-    "daniel",
-    "hosea",
-    "joel",
-    "amos",
-    "obadiah",
-    "jonah",
-    "micah",
-    "nahum",
-    "habakkuk",
-    "zephaniah",
-    "haggai",
-    "zechariah",
-    "malachi",
-    "matthew",
-    "mark",
-    "luke",
-    "john",
-    "acts",
-    "romans",
-    "1st Corinthians",
-    "2nd Corinthians",
-    "galatians",
-    "ephesians",
-    "philippians",
-    "colossians",
-    "1st Thessalonians",
-    "2nd Thessalonians",
-    "1st Timothy",
-    "2nd Timothy",
-    "titus",
-    "philemon",
-    "hebrews",
-    "james",
-    "1st Peter",
-    "2nd Peter",
-    "1st John",
-    "2nd John",
-    "3rd John",
-    "jude",
-    "revelation"
-];
+const books = require('./books.json');
 
 async function writeSection(book, chapters, file) {
 
@@ -80,15 +12,13 @@ async function writeSection(book, chapters, file) {
         range.push(i);
     }
 
-    fs.appendFileSync(file, `\n## ${book} ${chapters[0]}-${chapters[1]}`);
-
-    let index = books.indexOf(book) + 1;
+    fs.appendFileSync(file, `\n## ${books[book - 1]} ${chapters[0]}-${chapters[1]}`);
 
     for (const chapter in range) {
-        let url = `https://getbible.net/v2/web/${index}/${range[chapter]}.json`
+        let url = `https://getbible.net/v2/web/${book}/${range[chapter]}.json`
         await got(url, { responseType: 'json'}).then(response => {
 
-            fs.appendFileSync(file, '\n\n**' + book + range[chapter] + '**\n\n');
+            fs.appendFileSync(file, '\n\n**' + range[chapter] + '**\n\n');
             let json = response.body;
 
             json.verses.forEach(verse => {
@@ -104,15 +34,14 @@ async function writeSection(book, chapters, file) {
     }
 }
 
-async function doThis(sections, file) {
+async function getDay(sections, file) {
     for (let section in sections) {
         let data = sections[section];
         await writeSection(data.book, data.chapters, file);
     }
-
 }
 
-async function goOn() {
+async function init() {
     var dir = './tmp';
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
@@ -126,9 +55,8 @@ async function goOn() {
         fs.writeFile(file, '', () => {});
         fs.appendFileSync(file,  `# ${day.title} \n\n`);
 
-
-        await doThis(day.sections, file);
+        await getDay(day.sections, file);
     }
 }
 
-goOn();
+init();

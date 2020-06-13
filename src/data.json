@@ -4,15 +4,15 @@
         "title" : "Day One",
         "sections" : [
             {
-                "book" : "genesis",
+                "book" : 1,
                 "chapters": [1,6]
             },
             {
-                "book" : "job",
+                "book" : 18,
                 "chapters": [1,2]
             },
             {
-                "book" : "matthew",
+                "book" : 40,
                 "chapters": [1,2]
             }
         ]
@@ -22,15 +22,15 @@
         "title" : "Day Two",
         "sections" : [
             {
-                "book" : "genesis",
+                "book" : 1,
                 "chapters": [7,12]
             },
             {
-                "book" : "job",
+                "book" : 18,
                 "chapters": [3,4]
             },
             {
-                "book" : "matthew",
+                "book" : 40,
                 "chapters": [3,6]
             }
         ]
