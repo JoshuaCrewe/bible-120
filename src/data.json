@@ -1,0 +1,38 @@
+[
+    {
+        "id" : "001",
+        "title" : "Day One",
+        "sections" : [
+            {
+                "book" : "genesis",
+                "chapters": [1,6]
+            },
+            {
+                "book" : "job",
+                "chapters": [1,2]
+            },
+            {
+                "book" : "matthew",
+                "chapters": [1,2]
+            }
+        ]
+    },
+    {
+        "id" : "002",
+        "title" : "Day Two",
+        "sections" : [
+            {
+                "book" : "genesis",
+                "chapters": [7,12]
+            },
+            {
+                "book" : "job",
+                "chapters": [3,4]
+            },
+            {
+                "book" : "matthew",
+                "chapters": [3,6]
+            }
+        ]
+    }
+]
