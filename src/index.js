@@ -12,7 +12,7 @@ async function writeSection(book, chapters, file) {
         range.push(i);
     }
 
-    fs.appendFileSync(file, `\n<span class="beta"> ${books[book - 1]} </span>`);
+    fs.appendFileSync(file, `\n\n<span class="beta"> ${books[book - 1]} </span>`);
 
     for (const chapter in range) {
         let url = `https://getbible.net/v2/web/${book}/${range[chapter]}.json`
@@ -42,6 +42,13 @@ async function getDay(sections, file) {
     }
 }
 
+async function getSummary(sections, file) {
+    for (let section in sections) {
+        let data = sections[section];
+        fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]} - ${data.chapters[1]}_ <br />`);
+    }
+}
+
 async function init() {
     var dir = './tmp';
     if (!fs.existsSync(dir)){
@@ -57,6 +64,7 @@ async function init() {
         fs.appendFileSync(file,  `# ${day.title} \n\n`);
 
         // Here we want to print the reading list for that day
+        await getSummary(day.sections, file);
 
         await getDay(day.sections, file);
     }
