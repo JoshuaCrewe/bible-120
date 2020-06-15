@@ -23,7 +23,7 @@
         "sections" : [
             {
                 "book" : 1,
-                "chapters": [7,12]
+                "chapters": [7,14]
             },
             {
                 "book" : 18,
@@ -31,7 +31,97 @@
             },
             {
                 "book" : 40,
-                "chapters": [3,6]
+                "chapters": [3,4]
+            }
+        ]
+    },
+    {
+        "id" : "003",
+        "title" : "Day Three",
+        "sections" : [
+            {
+                "book" : 1,
+                "chapters": [15,20]
+            },
+            {
+                "book" : 18,
+                "chapters": [5,5]
+            },
+            {
+                "book" : 40,
+                "chapters": [5,6]
+            }
+        ]
+    },
+    {
+        "id" : "004",
+        "title" : "Day Four",
+        "sections" : [
+            {
+                "book" : 1,
+                "chapters": [21,25]
+            },
+            {
+                "book" : 18,
+                "chapters": [6,6]
+            },
+            {
+                "book" : 40,
+                "chapters": [7,8]
+            }
+        ]
+    },
+    {
+        "id" : "005",
+        "title" : "Day Five",
+        "sections" : [
+            {
+                "book" : 1,
+                "chapters": [26,29]
+            },
+            {
+                "book" : 18,
+                "chapters": [7,8]
+            },
+            {
+                "book" : 40,
+                "chapters": [9,10]
+            }
+        ]
+    },
+    {
+        "id" : "006",
+        "title" : "Day Six",
+        "sections" : [
+            {
+                "book" : 1,
+                "chapters": [30,33]
+            },
+            {
+                "book" : 18,
+                "chapters": [9,10]
+            },
+            {
+                "book" : 40,
+                "chapters": [11,12]
+            }
+        ]
+    },
+    {
+        "id" : "007",
+        "title" : "Day Seven",
+        "sections" : [
+            {
+                "book" : 1,
+                "chapters": [34,38]
+            },
+            {
+                "book" : 18,
+                "chapters": [11,12]
+            },
+            {
+                "book" : 40,
+                "chapters": [13,13]
             }
         ]
     }
