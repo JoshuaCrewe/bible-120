@@ -1,14 +1,15 @@
+# Bible in 120 days ebook
+
 [Creating ePub with pandoc](https://pandoc.org/epub.html)
 
 [Source text](https://worldenglish.bible/)
 
 [Source API](https://github.com/getbible/v2)
 
-`pandoc -o ./dist/bible-120.epub --metadata title="Bible in 120 Days" ./src/tmp/*.md `
-
+`pandoc -o ./build/bible-120.epub ./tmp/*.md --metadata title="Bible in 120 Days" --css ./src/style.css`
 
 @TODO
 
 [ ] - Automate ebook creation
-[ ] - Add styles to pandoc when creating ebook
+[X] - Add styles to pandoc when creating ebook
 [ ] - Add full reading plan data

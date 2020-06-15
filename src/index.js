@@ -12,13 +12,13 @@ async function writeSection(book, chapters, file) {
         range.push(i);
     }
 
-    fs.appendFileSync(file, `\n## ${books[book - 1]} ${chapters[0]}-${chapters[1]}`);
+    fs.appendFileSync(file, `\n<span class="beta"> ${books[book - 1]} </span>`);
 
     for (const chapter in range) {
         let url = `https://getbible.net/v2/web/${book}/${range[chapter]}.json`
         await got(url, { responseType: 'json'}).then(response => {
 
-            fs.appendFileSync(file, '\n\n**' + range[chapter] + '**\n\n');
+            fs.appendFileSync(file, '\n\n<span class="chapter-number">' + range[chapter] + '</span> ');
             let json = response.body;
 
             json.verses.forEach(verse => {
@@ -35,6 +35,7 @@ async function writeSection(book, chapters, file) {
 }
 
 async function getDay(sections, file) {
+    console.log(file);
     for (let section in sections) {
         let data = sections[section];
         await writeSection(data.book, data.chapters, file);
@@ -52,8 +53,10 @@ async function init() {
 
         let file = `${dir}/${day.id}.md`;
 
-        fs.writeFile(file, '', () => {});
+        fs.writeFileSync(file, '', () => {});
         fs.appendFileSync(file,  `# ${day.title} \n\n`);
+
+        // Here we want to print the reading list for that day
 
         await getDay(day.sections, file);
     }
