@@ -4,3 +4,6 @@ node_modules
 
 src/tmp
 dist
+/tmp
+
+/build
