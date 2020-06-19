@@ -45,7 +45,11 @@ async function getDay(sections, file) {
 async function getSummary(sections, file) {
     for (let section in sections) {
         let data = sections[section];
-        fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]} - ${data.chapters[1]}_ <br />`);
+        if (data.chapters[0] == data.chapters[1]) {
+            fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]}_ <br />`);
+        } else {
+            fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]} - ${data.chapters[1]}_ <br />`);
+        }
     }
 }
 
