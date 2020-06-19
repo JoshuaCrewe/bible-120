@@ -5,6 +5,8 @@ const fs = require('fs');
 const readingPlan = require('./data.json')
 const books = require('./books.json');
 
+var writtenNumber = require('written-number');
+
 async function writeSection(book, chapters, file) {
 
     let range = [];
@@ -35,7 +37,6 @@ async function writeSection(book, chapters, file) {
 }
 
 async function getDay(sections, file) {
-    console.log(file);
     for (let section in sections) {
         let data = sections[section];
         await writeSection(data.book, data.chapters, file);
@@ -64,8 +65,11 @@ async function init() {
 
         let file = `${dir}/${day.id}.md`;
 
+        let title = `Day ${writtenNumber(day.id).replace(/^\w/, c => c.toUpperCase())}`
+        console.log(title);
+
         fs.writeFileSync(file, '', () => {});
-        fs.appendFileSync(file,  `# ${day.title} \n\n`);
+        fs.appendFileSync(file,  `# ${title} \n\n`);
 
         // Here we want to print the reading list for that day
         await getSummary(day.sections, file);
