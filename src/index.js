@@ -27,7 +27,9 @@ async function writeSection(book, chapters, file) {
                 // Remove the notes ?
                 let regex = /(\/f(.*)\/f\*)/g;
 
-                fs.appendFileSync(file, verse.text.replace(/^\s+/g, '').replace(regex, '') + '\r\n');
+                fs.appendFileSync(file, verse.text
+                    .replace(/^\s+/g, '')
+                    .replace(regex, '') + '\r\n');
             });
 
         }).catch(error => {
@@ -37,6 +39,7 @@ async function writeSection(book, chapters, file) {
 }
 
 async function getDay(sections, file) {
+    console.log(file);
     for (let section in sections) {
         let data = sections[section];
         await writeSection(data.book, data.chapters, file);
@@ -46,6 +49,7 @@ async function getDay(sections, file) {
 async function getSummary(sections, file) {
     for (let section in sections) {
         let data = sections[section];
+
         if (data.chapters[0] == data.chapters[1]) {
             fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]}_ <br />`);
         } else {

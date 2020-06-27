@@ -6,7 +6,7 @@
 
 [Source API](https://github.com/getbible/v2)
 
-`pandoc -o ./build/bible-120.epub ./tmp/*.md --metadata title="Bible in 120 Days" --css ./src/style.css`
+`pandoc -o ./build/bible-120.epub -f markdown-smart ./tmp/*.md --metadata title="Bible in 120 Days" --css ./src/style.css`
 
 @TODO
 
