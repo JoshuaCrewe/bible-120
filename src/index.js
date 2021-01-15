@@ -10,8 +10,12 @@ var writtenNumber = require('written-number');
 async function writeSection(book, chapters, file) {
 
     let range = [];
-    for(var i = chapters[0]; i < chapters[1] + 1; i++){
-        range.push(i);
+    if (chapters.length > 1) {
+        for(var i = chapters[0]; i < chapters[1] + 1; i++){
+            range.push(i);
+        }
+    } else {
+        range.push(chapters[0]);
     }
 
     fs.appendFileSync(file, `\n\n<span class="beta"> ${books[book - 1]} </span>`);
@@ -50,7 +54,7 @@ async function getSummary(sections, file) {
     for (let section in sections) {
         let data = sections[section];
 
-        if (data.chapters[0] == data.chapters[1]) {
+        if (data.chapters[0] == data.chapters[1] || data.chapters.length == 1) {
             fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]}_ <br />`);
         } else {
             fs.appendFileSync(file,  `_${books[data.book - 1]} ${data.chapters[0]} - ${data.chapters[1]}_ <br />`);
