@@ -11,6 +11,9 @@
 @TODO
 
 [ ] - Automate ebook creation
+
 [X] - Add styles to pandoc when creating ebook
+
 [X] - Add a summary of the days plan
+
 [ ] - Add full reading plan data
