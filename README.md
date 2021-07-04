@@ -16,4 +16,4 @@
 
 [X] - Add a summary of the days plan
 
-[ ] - Add full reading plan data
+[X] - Add full reading plan data
