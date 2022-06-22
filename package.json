@@ -9,7 +9,7 @@
   "author": "Joshua Crewe",
   "license": "MIT",
   "dependencies": {
-    "got": "^11.3.0",
+    "got": "^11.8.5",
     "written-number": "^0.9.1"
   }
 }
